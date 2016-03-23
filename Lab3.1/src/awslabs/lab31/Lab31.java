@@ -122,24 +122,36 @@ public class Lab31 {
 			labCode.postToQueue(sqsClient, queueUrl, messageText);
 			System.out.println("Message posted.");
 
+			// レプリケートされたキューに送信結果が反映されることを期待し、少し待つ
+			Thread.sleep(100);
+
 			// キューからメッセージを読む
 			System.out.println("Reading messages from queue.");
 
 			List<Message> messages = labCode.readMessages(sqsClient, queueUrl);
-			// ここで2つのメッセージが期待される
+			for(Message m : messages)
+				System.out.println(m.getMessageId());
+			// ここで2つまたは3つ (初回実行時は手で追加した notification がある) のメッセージが期待される
 			if (messages.size() < 2) {
-				// 再度読むことを試行し、失われたメッセージをピックアップしていないか確認
+				// レプリケートされたキューに読み込み結果が反映されることを期待し、少し待つ
+				Thread.sleep(100);
+				// 再度読むことを試行し、一度に複数のメッセージを読み込めているか確認
 				messages.addAll(labCode.readMessages(sqsClient, queueUrl));
+				for(Message m : messages)
+					System.out.println(m.getMessageId());
 				if (messages.size() < 2) {
-					System.out.println(">>WARNING<< We didn't receive the expected number of messages. Investigate.");
+					System.err.println(">>WARNING<< We didn't receive the expected number of messages. Too little thread sleep? Investigate.");
 				} else {
-					System.out.println();
-					System.out.println("============================================================================");
-					System.out.println("PROBLEM: ReadMessages() had to be called twice to collect all the messages.");
-					System.out.println("         Did you remember to set the MaxNumberOfMessages property in the ");
-					System.out.println("         ReceiveMessageRequest object?");
-					System.out.println("============================================================================");
-					System.out.println();
+					StringBuilder sb = new StringBuilder();
+					String nl = System.getProperty("line.separator");
+					sb.append(nl);
+					sb.append("============================================================================" + nl);
+					sb.append("PROBLEM: ReadMessages() had to be called twice to collect all the messages." + nl);
+					sb.append("         Did you remember to set the MaxNumberOfMessages property in the " + nl);
+					sb.append("         ReceiveMessageRequest object?" + nl);
+					sb.append("============================================================================" + nl);
+					sb.append(nl);
+					System.err.print(sb);
 
 				}
 			}
