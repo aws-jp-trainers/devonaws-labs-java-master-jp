@@ -129,16 +129,12 @@ public class Lab31 {
 			System.out.println("Reading messages from queue.");
 
 			List<Message> messages = labCode.readMessages(sqsClient, queueUrl);
-			for(Message m : messages)
-				System.out.println(m.getMessageId());
 			// ここで2つまたは3つ (初回実行時は手で追加した notification がある) のメッセージが期待される
 			if (messages.size() < 2) {
 				// レプリケートされたキューに読み込み結果が反映されることを期待し、少し待つ
 				Thread.sleep(100);
 				// 再度読むことを試行し、一度に複数のメッセージを読み込めているか確認
 				messages.addAll(labCode.readMessages(sqsClient, queueUrl));
-				for(Message m : messages)
-					System.out.println(m.getMessageId());
 				if (messages.size() < 2) {
 					System.err.println(">>WARNING<< We didn't receive the expected number of messages. Too little thread sleep? Investigate.");
 				} else {
