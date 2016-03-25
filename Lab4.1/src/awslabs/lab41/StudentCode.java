@@ -24,157 +24,157 @@ import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClient;
 import com.amazonaws.services.securitytoken.model.Credentials;
 
 /**
- * プロジェクト: Lab4.1
+ * �v���W�F�N�g: Lab4.1
  */
 public class StudentCode extends SolutionCode {
 	/**
-	 * 指定されたユーザのARNを検索して返す
-	 * Hint: クライアントオブジェクトのgetUser()メソッドを使用する。ユーザーのARNが戻り値
+	 * �w�肳�ꂽ���[�U��ARN���������ĕԂ�
+	 * Hint: �N���C�A���g�I�u�W�F�N�g��getUser()���\�b�h���g�p����B���[�U�[��ARN���߂�l
 	 * 
-	 * @param iamClient	IAMクライアントオブジェクト
-	 * @param userName	検索するユーザーの名前
-	 * @return 指定されたユーザのARN
+	 * @param iamClient	IAM�N���C�A���g�I�u�W�F�N�g
+	 * @param userName	�������郆�[�U�[�̖��O
+	 * @return �w�肳�ꂽ���[�U��ARN
 	 */
 	@Override
 	public String prepMode_GetUserArn(AmazonIdentityManagementClient iamClient, String userName) {
 		
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		return super.prepMode_GetUserArn(iamClient, userName);
 	}
 
 	/**
-	 * 指定されたポリシーと信頼関係テキストを使用し、指定されたロールを作成。ロールARNを返す
+	 * �w�肳�ꂽ�|���V�[�ƐM���֌W�e�L�X�g���g�p���A�w�肳�ꂽ���[�����쐬�B���[��ARN��Ԃ�
 	 * 
-	 * @param iamClient				IAMクライアントオブジェクト
-	 * @param roleName				作成するロールの名前
-	 * @param policyText			ロールに付加するポリシー
-	 * @param trustRelationshipText	だれがロールを引き継ぐことができるかを定義するポリシー
-	 * @return 新規に作成したロールのARN
+	 * @param iamClient				IAM�N���C�A���g�I�u�W�F�N�g
+	 * @param roleName				�쐬���郍�[���̖��O
+	 * @param policyText			���[���ɕt������|���V�[
+	 * @param trustRelationshipText	���ꂪ���[���������p�����Ƃ��ł��邩���`����|���V�[
+	 * @return �V�K�ɍ쐬�������[����ARN
 	 */
 	@Override
 	public String prepMode_CreateRole(AmazonIdentityManagementClient iamClient, String roleName, String policyText,
 			String trustRelationshipText) {
 
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		return super.prepMode_CreateRole(iamClient, roleName, policyText, trustRelationshipText);
 	}
 
 	/**
-	 * 指定したロールを引き継ぐ
-	 * Hint: クライアントオブジェクトのassumeRole()メソッドを使用する
-	 * オプション: ここで、結果整合性の問題をみる可能性があります。. AssumeRoleパーミッションは、システム全体に浸透していない可能性があり、これによりロールを引き継ぐことが阻害される可能性があります
-	 *　"AmazonServiceException"のエラーコード"AccessDenied" を確認し、少し待機した後にロール操作の引き継ぎを再試行する(再試行でexponential back-offを使用）
-	 * 再試行をやめると判断した場合は、ヌルを返す
+	 * �w�肵�����[���������p��
+	 * Hint: �N���C�A���g�I�u�W�F�N�g��assumeRole()���\�b�h���g�p����
+	 * �I�v�V����: �����ŁA���ʐ������̖����݂�\��������܂��B. AssumeRole�p�[�~�b�V�����́A�V�X�e���S�̂ɐZ�����Ă��Ȃ��\��������A����ɂ�胍�[���������p�����Ƃ��j�Q�����\��������܂�
+	 *�@"AmazonServiceException"�̃G���[�R�[�h"AccessDenied" ���m�F���A�����ҋ@������Ƀ��[������̈����p�����Ď��s����(�Ď��s��exponential back-off���g�p�j
+	 * �Ď��s����߂�Ɣ��f�����ꍇ�́A�k����Ԃ�
 	 * 	
-	 * @param stsClient			STSクライアントオブジェクト
-	 * @param roleArn			引き継ぐロールのARN
-	 * @param roleSessionName	ロールセッション名として使用する名前
-	 * @return ロール認証情報、または問題がある場合はヌル
+	 * @param stsClient			STS�N���C�A���g�I�u�W�F�N�g
+	 * @param roleArn			�����p�����[����ARN
+	 * @param roleSessionName	���[���Z�b�V�������Ƃ��Ďg�p���閼�O
+	 * @return ���[���F�؏��A�܂��͖�肪����ꍇ�̓k��
 	 */
 	@Override
 	public Credentials appMode_AssumeRole(AWSSecurityTokenServiceClient stsClient, String roleArn,
 			String roleSessionName) {
 		
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		return super.appMode_AssumeRole(stsClient, roleArn, roleSessionName);
 	}
 
 	/**
-	 * 与えられた認証情報（前にassumeRole()メソッドの呼び出しで返されたもの）を使用して、セッション/一時認証情報を作成する
-	 * そして、セッション認証情報を使用してS3クライアントオブジェクトを作成する
+	 * �^����ꂽ�F�؏��i�O��assumeRole()���\�b�h�̌Ăяo���ŕԂ��ꂽ���́j���g�p���āA�Z�b�V����/�ꎞ�F�؏����쐬����
+	 * �����āA�Z�b�V�����F�؏����g�p����S3�N���C�A���g�I�u�W�F�N�g���쐬����
 	 * 
-	 * @param credentials	セッション認証情報を作成するために使用する認証情報
-	 * @param region		クライアントに使用するリージョンのエンドポイント
-	 * @return S3クライアントオブジェクト
+	 * @param credentials	�Z�b�V�����F�؏����쐬���邽�߂Ɏg�p����F�؏��
+	 * @param region		�N���C�A���g�Ɏg�p���郊�[�W�����̃G���h�|�C���g
+	 * @return S3�N���C�A���g�I�u�W�F�N�g
 	 */
 	@Override
 	public AmazonS3Client appMode_CreateS3Client(Credentials credentials, Region region) {
 		
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		return super.appMode_CreateS3Client(credentials, region);
 	}
 
 	/**
-	 * 作成しようとしているロール名とマッチするロールを削除。これはラボ制御コードから呼び出され、ラボ実行に支障をきたす可能性があるリソースをクリーンアップするために呼び出される 
+	 * �쐬���悤�Ƃ��Ă��郍�[�����ƃ}�b�`���郍�[�����폜�B����̓��{����R�[�h����Ăяo����A���{���s�Ɏx����������\�������郊�\�[�X���N���[���A�b�v���邽�߂ɌĂяo����� 
 	 * 
-	 * @param iamClient	IAMクライアントオブジェクト
-	 * @param roles		ロール名のリスト
+	 * @param iamClient	IAM�N���C�A���g�I�u�W�F�N�g
+	 * @param roles		���[�����̃��X�g
 	 */
 	@Override
 	public void prepMode_RemoveRoles(AmazonIdentityManagementClient iamClient, String... roles) {
 		
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		super.prepMode_RemoveRoles(iamClient, roles);
 	}
 
 	/**
-	 * このラボで後で使用されるバケットを作成する。ラボ演習の環境を準備するためのコード 
+	 * ���̃��{�Ō�Ŏg�p�����o�P�b�g���쐬����B���{���K�̊����������邽�߂̃R�[�h 
 	 * 
-	 * @param s3Client		S3クライアントオブジェクト
-	 * @param bucketName	作成するバケット
+	 * @param s3Client		S3�N���C�A���g�I�u�W�F�N�g
+	 * @param bucketName	�쐬����o�P�b�g
 	 */
 	@Override
 	public void prepMode_CreateBucket(AmazonS3Client s3Client, String bucketName, Region region) {
 
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		super.prepMode_CreateBucket(s3Client, bucketName, region);
 	}
 
 	/**
-	 * SNSトピックのリストをリクエストすることで、与えられた認証情報を使ってSNSサービスにアクセスできるかをテストする
-	 * テストの仕方は問いません。なんらかのリクエストを送信して、実行を確認してください
+	 * SNS�g�s�b�N�̃��X�g�����N�G�X�g���邱�ƂŁA�^����ꂽ�F�؏����g����SNS�T�[�r�X�ɃA�N�Z�X�ł��邩���e�X�g����
+	 * �e�X�g�̎d���͖₢�܂���B�Ȃ�炩�̃��N�G�X�g�𑗐M���āA���s���m�F���Ă�������
 	 * 
-	 * @param region		クライアント接続に使用するリージョンエンドポイント
-	 * @param credentials	使用する認証情報
-	 * @return サービスがアクセス可能な場合はTrue。認証情報が拒否された場合はFalse 
+	 * @param region		�N���C�A���g�ڑ��Ɏg�p���郊�[�W�����G���h�|�C���g
+	 * @param credentials	�g�p����F�؏��
+	 * @return �T�[�r�X���A�N�Z�X�\�ȏꍇ��True�B�F�؏�񂪋��ۂ��ꂽ�ꍇ��False 
 	 */
 	@Override
 	public Boolean appMode_TestSnsAccess(Region region, BasicSessionCredentials credentials) {
 
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		return super.appMode_TestSnsAccess(region, credentials);
 	}
 
 	/**
-	 * SQSキューのリストをリクエストすることで、与えられた認証情報を使ってSQSサービスにアクセスできるかをテストする
-	 * テストの仕方は問いません。なんらかのリクエストを送信して、実行を確認してください
+	 * SQS�L���[�̃��X�g�����N�G�X�g���邱�ƂŁA�^����ꂽ�F�؏����g����SQS�T�[�r�X�ɃA�N�Z�X�ł��邩���e�X�g����
+	 * �e�X�g�̎d���͖₢�܂���B�Ȃ�炩�̃��N�G�X�g�𑗐M���āA���s���m�F���Ă�������
 	 * 
-	 * @param region		クライアント接続に使用するリージョンエンドポイント
-	 * @param credentials	使用する認証情報
-	 * @return サービスがアクセス可能な場合はTrue。認証情報が拒否された場合はFalse 
+	 * @param region		�N���C�A���g�ڑ��Ɏg�p���郊�[�W�����G���h�|�C���g
+	 * @param credentials	�g�p����F�؏��
+	 * @return �T�[�r�X���A�N�Z�X�\�ȏꍇ��True�B�F�؏�񂪋��ۂ��ꂽ�ꍇ��False 
 	 */
 	@Override
 	public Boolean appMode_TestSqsAccess(Region region, BasicSessionCredentials credentials) {
 		
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		return super.appMode_TestSqsAccess(region, credentials);
 	}
 
 	/**
-	 * IAMユーザーのリストをリクエストすることで、与えられた認証情報を使ってIAMサービスにアクセスできるかをテストする
-	 * テストの仕方は問いません。なんらかのリクエストを送信して、実行を確認してください
+	 * IAM���[�U�[�̃��X�g�����N�G�X�g���邱�ƂŁA�^����ꂽ�F�؏����g����IAM�T�[�r�X�ɃA�N�Z�X�ł��邩���e�X�g����
+	 * �e�X�g�̎d���͖₢�܂���B�Ȃ�炩�̃��N�G�X�g�𑗐M���āA���s���m�F���Ă�������
 	 * 
-	 * @param region		クライアント接続に使用するリージョンエンドポイント
-	 * @param credentials	使用する認証情報
-	 * @return サービスがアクセス可能な場合はTrue。認証情報が拒否された場合はFalse 
+	 * @param region		�N���C�A���g�ڑ��Ɏg�p���郊�[�W�����G���h�|�C���g
+	 * @param credentials	�g�p����F�؏��
+	 * @return �T�[�r�X���A�N�Z�X�\�ȏꍇ��True�B�F�؏�񂪋��ۂ��ꂽ�ꍇ��False 
 	 */
 	@Override
 	public Boolean appMode_TestIamAccess(Region region, BasicSessionCredentials credentials) {
 		
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		return super.appMode_TestIamAccess(region, credentials);
 	}
 
 	/**
-	 * このラボで作成されたバケットのクリーンアップと削除
+	 * ���̃��{�ō쐬���ꂽ�o�P�b�g�̃N���[���A�b�v�ƍ폜
 	 * 
-	 * @param s3Client		S3クライアントオブジェクト
-	 * @param bucketNames	削除するバケット
+	 * @param s3Client		S3�N���C�A���g�I�u�W�F�N�g
+	 * @param bucketNames	�폜����o�P�b�g
 	 */
 	@Override
 	public void removeLabBuckets(AmazonS3Client s3Client, List<String> bucketNames) {
 		
-		//TODO: スーパークラスの呼び出しを、自分の実装メソッドと差し替える
+		//TODO: �X�[�p�[�N���X�̌Ăяo�����A�����̎������\�b�h�ƍ����ւ���
 		super.removeLabBuckets(s3Client, bucketNames);
 	}
 }

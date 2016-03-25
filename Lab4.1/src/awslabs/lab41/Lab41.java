@@ -142,7 +142,7 @@ public class Lab41 {
         //stsClient.setRegion(Lab41.region);
         
         System.out.println("\nAssuming developer role to retrieve developer session credentials.");
-        Boolean retry;
+        boolean retry;
         long start = System.currentTimeMillis();
         do
         {
@@ -210,6 +210,13 @@ public class Lab41 {
             }
         } while (retry); 
 
+        // これまでに行った変更が　SQS, SNS, S3 などに認識されることを期待して、少しスリープする
+        System.out.println("\nSleeping for 10 seconds.");
+        for(int i = 0; i < 10; i++) {
+        	System.out.print(".");
+        	Thread.sleep(1000);
+        }
+        
         System.out.println("\nCreating S3 client objects.");
         
         AmazonS3Client devS3Client = labCode.appMode_CreateS3Client(devCredentials, Lab41.region);
